@@ -5,28 +5,7 @@ import axios from "axios";
 import MetaDataContainer from "../components/MetaDataContainer";
 import { Box, Heading } from "@primer/react";
 import DeploymentList from "../components/DeploymentList";
-
-interface DeploymentEvent {
-  message: string;
-  reason: string;
-}
-
-interface DeploymentContainer {
-  name: string;
-  image: string;
-}
-
-interface Deployment {
-  name: string;
-  namespace: string;
-  replicas: number;
-  availableReplicas: number;
-  readyReplicas: number;
-  containers: DeploymentContainer[];
-  status: string;
-  age: number;
-  event: DeploymentEvent[];
-}
+import { Deployment } from "../types/deployment";
 
 const NameSpacePage = () => {
   const [deployments, setDeployments] = useState<Deployment[]>([]);
@@ -38,7 +17,7 @@ const NameSpacePage = () => {
     const getNamespaceDetail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/deployments/${namespace}`,
+          `http://localhost:3000/deployments/${namespace}`
         );
         const deployments = response.data.data.deployments;
         setDeployments(deployments);

@@ -4,8 +4,7 @@ import MyNav from "../components/NavList";
 import NamespaceContainer from "../components/NamespaceContainer";
 import DeploymenContainer from "../components/DeploymentContainer";
 import { useState } from "react";
-
-type ResourceType = "namespace" | "deployment";
+import { ResourceType } from "../types/common";
 
 const MainPage = () => {
   const [resource, setResource] = useState<ResourceType>("namespace");

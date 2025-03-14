@@ -19,9 +19,7 @@ const NamespaceContainer = () => {
   useEffect(() => {
     const getNamespace = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3000/daangn-monitor/namespaces",
-        );
+        const response = await axios.get("http://localhost:3000/namespaces");
         const namespaces = response.data.data.namespaces;
         setNamespaces(namespaces);
       } catch (error) {
